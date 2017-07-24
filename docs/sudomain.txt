@@ -1,0 +1,48 @@
+﻿// Main.c in sudo-code
+
+
+main (#arguments, list_arguments)
+{
+	see if there are any arguments
+		if there are arguments then use those to continue the program
+
+	if there are no arguments check to see if there is a window manager
+		if there is a window manager start SDL
+			run the SDL_Main()
+			on a correct exit return 0
+
+	if there is no window manager start curses
+		run the curses_main()
+		on a correct exit return 0
+
+	if nothing worked quit the program and return 1
+}
+
+sdl_main()
+{
+	variables to
+		check if the program is running
+		provide the SDL event structure
+		provide the main window structure
+
+	create the main window
+		“Expanse”
+		undefined position
+		undefined position
+		640
+		480
+		use SDL with opengl
+
+	check to see if the window was created
+		if there is no window then post an error to terminal
+		end the program with return 1
+
+	run main loop until the program should not be running
+		run the SDL loop
+			if SDL_QUIT event happens stop the event loop and main loop
+
+	destroy the main window
+	sdl_quit
+
+	return 0
+}
