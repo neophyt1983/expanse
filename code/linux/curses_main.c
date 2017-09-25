@@ -24,6 +24,9 @@ int curses_main()
 	int kb_press = 0;
 	//int m_location[2][2];
 	struct winsize crs_winSz;
+	// This will get the dimensions of the screen, should be handled by
+	// A function for continuous update or display will be incorrect if
+	// window is resized. Only needs to be done once if in terminal.
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &crs_winSz);
 
 	initscr();
