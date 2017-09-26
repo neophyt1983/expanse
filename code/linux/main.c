@@ -14,6 +14,8 @@
 #include <curses.h>
 #include <stdbool.h>
 #include <X11/Xlib.h>
+#include "expanse.h"
+
 
 // Definitions
 

@@ -12,14 +12,18 @@
 #include <unistd.h>
 #include <string.h>
 #include <signal.h>
+
+
 //Declerations
 
 
 //Functions
+
+
 // Clean up escape key codes so that they work correctly.
 char kb_cleanup(char);
 // Ignore SIGINT, ctrl-c won't close the pogram...
-void ignore(void);
+void signalHandler(int signum);
 
 
 int curses_main()
@@ -47,7 +51,7 @@ int curses_main()
 		//mvprintw(1,1,"%c",kb_press);
 		refresh();
 		kb_press = kb_cleanup(getch());
-		signal(SIGINT, ignore);
+		signal(SIGINT, signalHandler);
 
 	}
 	endwin();
@@ -66,6 +70,15 @@ char kb_cleanup(char key)
 	return 0;
 }
 
-void ignore(void)
+void signalHandler(int signum)
 {
+	switch(signum) {
+		case 2 :
+			mvprintw(1,1, "You may not exit this way! Press any key!\n");
+			getch();
+			break;
+		default :
+			mvprintw(1,1, "Unknown interupt! Press any key!\n");
+			getch();
+		}
 }
