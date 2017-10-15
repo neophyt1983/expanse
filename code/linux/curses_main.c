@@ -24,7 +24,9 @@
 char kb_cleanup(char);
 // Ignore SIGINT, ctrl-c won't close the pogram...
 void signalHandler(int signum);
-
+// Place menu options correctly on the screen and don't
+// display options that go beyond the vertical edges
+void CenterLeftJustify(int sHeight, int sWidth, int totalOptions, char *option[]);
 
 int curses_main()
 {
@@ -47,7 +49,7 @@ int curses_main()
 	while(kb_press != 27)
 	{
 		//Remember mvprintw and other mv functions in curses are always written (columns, rows) or (y,x)
-		mvprintw((crs_winSz.ws_row/2),((crs_winSz.ws_col/2)-(strlen("Press escape to leave!")/2)), "Press escape to leave!");
+		mvprintw((crs_winSz.ws_row-2),2, "Press escape to leave!");
 		//mvprintw(1,1,"%c",kb_press);
 		refresh();
 		kb_press = kb_cleanup(getch());
@@ -81,4 +83,9 @@ void signalHandler(int signum)
 			mvprintw(1,1, "Unknown interupt! Press any key!\n");
 			getch();
 		}
+}
+
+void CenterLeftJustify(int sHeight, int sWidth, int totalOptions, char *option[])
+{
+	
 }

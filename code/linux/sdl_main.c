@@ -5,13 +5,14 @@
 #include <SDL2/SDL_timer.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_audio.h>
-//#include <vulkan/vulkan.h>
 #include <curses.h>
 #include <stdbool.h>
 #include <X11/Xlib.h>
 
 
-int sdl_main()
+// Definitions
+
+int sdlMain()
 {
 	// Used to check to see if SDL is running in the main loop
 	bool running = true;

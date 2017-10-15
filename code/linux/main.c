@@ -10,11 +10,11 @@
 #include <SDL2/SDL_timer.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_audio.h>
-//#include <vulkan/vulkan.h>
-#include <curses.h>
-#include <stdbool.h>
 #include <X11/Xlib.h>
-//#include "sdl_main.c"
+#include <unistd.h>
+#include <getopt.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
 
 
 // Definitions
@@ -27,14 +27,28 @@ int curses_main();
 
 int main(int argc, char **argv)
 {
-	//Checks to see if user selected curses mode
-	if(argc > 1)
-		if( strcmp(argv[1], "C") == 0 || strcmp(argv[1],"c") == 0)
-		{
-			curses_main();
-			return 0;
-		}
+	// Looks for arguments
 	
+	int count = -1;
+
+	while ((count = getopt(argc, argv,"crh:")) != -1) {
+		
+		switch (count)
+		{
+			case 'c':  /* Curses Mode */
+				curses_main();
+				return 0;
+				break;
+			case 'r': /* Set the resolution */
+				printf("This is not yet implemented\n");
+				break;
+			case 'h':
+				printf("/nExpanse -R <option>\n\n-c, --curses\n\tSelect Curses mode\n\n-h --help\n\tHelp and general tips\n");
+				break;
+			default:
+				break;
+		}
+	}
 	// Checks to see if there is a window manager before attempting to run SDL
 	if(XOpenDisplay(NULL))
 	{
@@ -45,7 +59,7 @@ int main(int argc, char **argv)
 		}
 		else
 		{
-			sdl_main();
+			sdlMain();
 			return 0;
 		}
 	}
@@ -54,7 +68,6 @@ int main(int argc, char **argv)
 	if( initscr())
 	{
 		curses_main();
-		endwin();
 		return 0;
 	}
 	//Don't know what happened but nothing worked
