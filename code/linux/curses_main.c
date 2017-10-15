@@ -12,6 +12,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <signal.h>
+#include <menu.h>
 
 
 //Declerations
@@ -26,6 +27,10 @@ char kb_cleanup(char);
 void signalHandler(int signum);
 // Place menu options correctly on the screen and don't
 // display options that go beyond the vertical edges
+// Options may be no more than 30 characters long
+// Must be counted 1..10
+// Must contin a shortcut remembering that it may only require two keys
+// Shortcuts go in instructions & help files not on the main interface
 void CenterLeftJustify(int sHeight, int sWidth, int totalOptions, char *option[]);
 
 int curses_main()
