@@ -11,7 +11,7 @@
 #include <curses.h>
 #include <unistd.h>
 #include <string.h>
-#include <menu.h>
+//#include <menu.h>
 #include <stdbool.h>
 #include <ctype.h>
 
@@ -20,27 +20,27 @@
 
 //Functions
 
-
 // Clean up escape key codes so that they work correctly.
-char kb_cleanup(char);
+	char kb_cleanup(char);
 // Initialize all 64 color options (standard Ubuntu Terminal)
-void setColors();
+	void setColors();
 // Place menu options correctly on the screen and don't
 // display options that go beyond the vertical edges
 // Options may be no more than 30 characters long
 // Must be counted 1..10
 // Must contin a shortcut remembering that it may only require two keys
 // Shortcuts go in instructions & help files not on the main interface
-void TitlePlaque(char *text[]);
-void CenterLeftJustify(int sHeight, int sWidth, int totalOptions, char *option[]);
+	void TitlePlaque(char *text[]);
+	void CenterLeftJustify(int sHeight, int sWidth, int totalOptions, char *option[]);
 // Call to get the size of the window
-bool scr_size(void);
-int main_menu();
+	bool scr_size(void);
+	int main_menu();
 
 // Global Var
-bool colours = TRUE;
-struct winsize crs_winSz;
-struct winsize tst_winSz;
+
+	bool colours = TRUE;
+	struct winsize crs_winSz;
+	struct winsize tst_winSz;
 
 int curses_main()
 {
