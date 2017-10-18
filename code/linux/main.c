@@ -1,8 +1,19 @@
-//----------------------------------------------//
+/*----------------------------------------------//
 //      This is the Expanse Game Project        //
 //                      2017                    //
 //              Maintainer/s: Dale Kipple       //
 //----------------------------------------------//
+//                    License/s:                //
+//                                              //
+//					 SDL2 - Zlib                //
+//                stdio.h - GNU lGPL            //
+//              curses.h - see curses.h         //
+//                unistd.h - GNU lGPL           //
+//                string.h - GNU lGPL           //
+//                ctype.h - GNU lGPL            //
+//                socket.h - GNU lGPL           //
+//                 in.h - GNU lGPL              //
+//----------------------------------------------*/
 
 // Includes
 #include <SDL2/SDL.h>

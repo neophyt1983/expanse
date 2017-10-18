@@ -1,8 +1,18 @@
-//----------------------------------------------//
+/*----------------------------------------------//
 //      This is the Expanse Game Project        //
 //                      2017                    //
 //              Maintainer/s: Dale Kipple       //
 //----------------------------------------------//
+//                    License/s:                //
+//                                              //
+//                ioctl.h - GNU lGPL            //
+//                stdio.h - GNU lGPL            //
+//                stdlib.h - GNU lGPL           //
+//              curses.h - see curses.h         //
+//                unistd.h - GNU lGPL           //
+//                string.h - GNU lGPL           //
+//                ctype.h - GNU lGPL            //
+//----------------------------------------------*/
 
 //Includes
 #include <sys/ioctl.h>
@@ -12,7 +22,6 @@
 #include <unistd.h>
 #include <string.h>
 //#include <menu.h>
-#include <stdbool.h>
 #include <ctype.h>
 
 //Declerations

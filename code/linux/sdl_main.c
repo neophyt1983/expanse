@@ -1,3 +1,15 @@
+/*----------------------------------------------//
+//      This is the Expanse Game Project        //
+//                      2017                    //
+//              Maintainer/s: Dale Kipple       //
+//----------------------------------------------//
+//                    License/s:                //
+//                                              //
+//					 SDL2* - Zlib               //
+//                Xlib.h - see Xlib.h           //
+//              curses.h - see curses.h         //
+//             stdbool.h - /usr/lib/gcc/        //
+//----------------------------------------------*/
 
 // Includes
 #include <SDL2/SDL.h>
@@ -5,9 +17,8 @@
 #include <SDL2/SDL_timer.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_audio.h>
-#include <curses.h>
-#include <stdbool.h>
 #include <X11/Xlib.h>
+#include <stdbool.h>
 
 
 // Definitions
@@ -26,7 +37,7 @@ int sdlMain()
 		SDL_WINDOWPOS_UNDEFINED,
 		640,
 		480,
-		/*SDL_WINDOW_VULKAN*/SDL_WINDOW_OPENGL);
+		SDL_WINDOW_OPENGL);
 	
 
 	if ( WinMain == NULL){
