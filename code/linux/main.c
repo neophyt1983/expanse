@@ -21,7 +21,7 @@
 
 // Functions
 int shutdown();
-int sdl_main();
+int sdlMain();
 int curses_main();
 
 
@@ -66,12 +66,8 @@ int main(int argc, char **argv)
 		}
 	}
 	//SDL has failed so trying to start in curses mode
-	else
-	if( initscr())
-	{
-		curses_main();
-		return 0;
-	}
+	curses_main();
+	
 	//Don't know what happened but nothing worked
 	return 1;
 }
