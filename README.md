@@ -1,4 +1,4 @@
-# expanse is the working title for a social media platfor for the people.
+# expanse is the working title for a social media platform for the people.
 
 I, Dale, believe that people want social media as evidenced by the success of many platforms but because of the small monopoly <Facebook>
 people cannot have the security they deserve. The goal of expanse is to alleviate this by first hosting the open source software locally, on your device, which allows you to control where your information goes. Second expanse is not data mining you, Ever!
