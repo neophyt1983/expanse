@@ -21,7 +21,6 @@
 #include <curses.h>
 #include <unistd.h>
 #include <string.h>
-//#include <menu.h>
 #include <ctype.h>
 
 //Declerations
@@ -43,7 +42,8 @@
 	void CenterLeftJustify(int sHeight, int sWidth, int totalOptions, char *option[]);
 // Call to get the size of the window
 	bool scr_size(void);
-	int main_menu();
+// The interface processor
+	int cursInterface();
 
 // Global Var
 
@@ -86,9 +86,17 @@ int curses_main()
 
 	clear();
 
+	//init_pair(1, 1, 2);
+
 	while(toupper(getch()) != 'E')
 	{
-		main_menu();
+		for(int x = 1; x <= 64; x++)
+		{
+			attron(COLOR_PAIR(x));
+			printw("!");
+			refresh();
+		}
+		cursInterface();
 		scr_size();
 	}
 	endwin();
@@ -132,21 +140,17 @@ void setColors()
     // 49(6,0);50(6,1);51(6,2);52(6,3);53(6,4);54(6,5);55(6,6);56(6,7)
     // 57(7,0);58(7,1);59(7,2);60(7,3);61(7,4);62(7,5);63(7,6);64(7,7)
     */
-	int x = 0;
-	int y = 0;
-	int z = 0;
-
-	while(x < 8)
-	{
-		while(y < 8)
+	// The counter, z, has to start at 1 as 0 isn't anything and will result in white text on a black background.
+	int z = 1;
+	
+	// The algorithum below will produce 8x8 colors.
+	// This means every combination of 8 forground and background colors is represented
+	for(int x = 0; x <= 7; x++)
+		for(int y = 0; y <= 7; y++)
 		{
-			init_pair(z,x,y);
-			y++;
+			init_pair(z,y,x);
 			z++;
 		}
-		x++;
-		y=0;
-	}
 	return;
 }
 
@@ -161,7 +165,7 @@ bool scr_size(void)
     return false;
 }
 
-int main_menu()
+int cursInterface()
 {
 	return 0;
 }
