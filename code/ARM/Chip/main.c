@@ -59,7 +59,6 @@ int main(int argc, char **argv)
 				return 0;
 				break;
 			default:
-				curses_main();
 				break;
 		}
 	}
@@ -81,6 +80,7 @@ int main(int argc, char **argv)
 	curses_main();
 	
 	//Don't know what happened but nothing worked*/
+	curses_main();
 	return 1;
 }
 
