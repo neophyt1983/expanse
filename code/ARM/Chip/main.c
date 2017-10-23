@@ -16,11 +16,11 @@
 //----------------------------------------------*/
 
 // Includes
-#include <SDL2/SDL.h>
-#include <stdio.h>
-#include <SDL2/SDL_timer.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_audio.h>
+//#include <SDL2/SDL.h> // SDL2 does not yet work
+//#include <stdio.h>
+//#include <SDL2/SDL_timer.h>
+//#include <SDL2/SDL_image.h>
+//#include <SDL2/SDL_audio.h>
 #include <X11/Xlib.h>
 #include <unistd.h>
 #include <getopt.h>
@@ -32,7 +32,7 @@
 
 // Functions
 int shutdown();
-int sdlMain();
+//int sdlMain();
 int curses_main();
 
 
@@ -59,11 +59,12 @@ int main(int argc, char **argv)
 				return 0;
 				break;
 			default:
+				curses_main();
 				break;
 		}
 	}
 	// Checks to see if there is a window manager before attempting to run SDL
-	if(XOpenDisplay(NULL))
+	/*if(XOpenDisplay(NULL))
 	{
 		if( SDL_Init(SDL_INIT_VIDEO|SDL_INIT_TIMER) != 0)
 		{
@@ -79,7 +80,7 @@ int main(int argc, char **argv)
 	//SDL has failed so trying to start in curses mode
 	curses_main();
 	
-	//Don't know what happened but nothing worked
+	//Don't know what happened but nothing worked*/
 	return 1;
 }
 
