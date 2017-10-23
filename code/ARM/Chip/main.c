@@ -5,7 +5,7 @@
 //----------------------------------------------//
 //                    License/s:                //
 //                                              //
-//					 SDL2 - Zlib                //
+//		     SDL2 - Zlib                //
 //                stdio.h - GNU lGPL            //
 //              curses.h - see curses.h         //
 //                unistd.h - GNU lGPL           //
