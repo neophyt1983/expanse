@@ -167,5 +167,6 @@ bool scr_size(void)
 
 int cursInterface()
 {
+	vmenu(colours,"Hello World");
 	return 0;
 }
