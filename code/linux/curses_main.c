@@ -25,24 +25,28 @@
 
 //Declerations
 
+/* This struct defines each position on the screen with the characer that should be displayed and the data assiciated with that position. */
+typedef struct screen {
+	char image;
+	char functions[];
+} Display;
 
 //Functions
 
-// Clean up escape key codes so that they work correctly.
+/* Clean up escape key codes so that they work correctly. */
 	char kb_cleanup(char);
-// Initialize all 64 color options (standard Ubuntu Terminal)
+/* Initialize all 64 color options (standard Ubuntu Terminal) */
 	void setColors();
-// Place menu options correctly on the screen and don't
-// display options that go beyond the vertical edges
-// Options may be no more than 30 characters long
-// Must be counted 1..10
-// Must contin a shortcut remembering that it may only require two keys
-// Shortcuts go in instructions & help files not on the main interface
+/* Place menu options correctly on the screen and don't
+   display options that go beyond the vertical edges
+   Options may be no more than 30 characters long
+   Must contin a shortcut remembering that it may only require two keys
+   Shortcuts go in instructions & help files not on the main interface */
 	void TitlePlaque(char *text[]);
 	void CenterLeftJustify(int sHeight, int sWidth, int totalOptions, char *option[]);
-// Call to get the size of the window
+/* Call to get the size of the window */
 	bool scr_size(void);
-// The interface processor
+/* The interface processor */
 	int cursInterface();
 
 // Global Var
@@ -140,11 +144,11 @@ void setColors()
     // 49(6,0);50(6,1);51(6,2);52(6,3);53(6,4);54(6,5);55(6,6);56(6,7)
     // 57(7,0);58(7,1);59(7,2);60(7,3);61(7,4);62(7,5);63(7,6);64(7,7)
     */
-	// The counter, z, has to start at 1 as 0 isn't anything and will result in white text on a black background.
+	/* The counter, z, has to start at 1 as 0 isn't anything and will result in white text on a black background. */
 	int z = 1;
 	
-	// The algorithum below will produce 8x8 colors.
-	// This means every combination of 8 forground and background colors is represented
+	/* The algorithum below will produce 8x8 colors.
+	   This means every combination of 8 forground and background colors is represented */
 	for(int x = 0; x <= 7; x++)
 		for(int y = 0; y <= 7; y++)
 		{
