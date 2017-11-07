@@ -28,9 +28,8 @@
 /* This struct defines each position on the screen with the characer that should be displayed and the data assiciated with that position. */
 typedef struct screen {
 	char image;
-	char functions[];
+	char functions[5];
 } Display;
-
 //Functions
 
 /* Clean up escape key codes so that they work correctly. */
@@ -57,6 +56,7 @@ typedef struct screen {
 
 int curses_main()
 {
+    Display dMain[crs_winSz.ws_col*crs_winSz.ws_row];
 	scr_size();
 
 	if(!initscr())
@@ -94,14 +94,25 @@ int curses_main()
 
 	while(toupper(getch()) != 'E')
 	{
-		for(int x = 1; x <= 64; x++)
-		{
-			attron(COLOR_PAIR(x));
-			printw("!");
-			refresh();
-		}
 		cursInterface();
 		scr_size();
+        mvprintw(1,1,"%i -- %i || ", crs_winSz.ws_col, crs_winSz.ws_row);
+        refresh();
+
+        if((crs_winSz.ws_ypixel < 24) | (crs_winSz.ws_xpixel < 80))
+        {
+            clear();
+            while(toupper(getch()) != 'C')
+            {
+                mvprintw(1,1, "This program was meant to be viewed at\n80x24 minimum and will\nattempt to move objects to\nto allow it's continued.\n Press C to continue.");
+                refresh();
+            }
+        }
+
+		if(scr_size() == true)
+        {
+            clear();
+        }
 	}
 	endwin();
 	return 0;
@@ -115,13 +126,13 @@ char kb_cleanup(char key)
 			if(getch() == -1) return 27;
 			return kbhit;
 		}
-		
+
 	return 0;
 }
 
 void CenterLeftJustify(int sHeight, int sWidth, int totalOptions, char *option[])
 {
-	
+
 }
 
 void setColors()
@@ -146,7 +157,7 @@ void setColors()
     */
 	/* The counter, z, has to start at 1 as 0 isn't anything and will result in white text on a black background. */
 	int z = 1;
-	
+
 	/* The algorithum below will produce 8x8 colors.
 	   This means every combination of 8 forground and background colors is represented */
 	for(int x = 0; x <= 7; x++)
@@ -161,7 +172,7 @@ void setColors()
 bool scr_size(void)
 {
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &tst_winSz);
-    if((crs_winSz.ws_col != tst_winSz.ws_col) | (crs_winSz.ws_row != tst_winSz.ws_row))
+    if((crs_winSz.ws_ypixel != tst_winSz.ws_ypixel) | (crs_winSz.ws_xpixel != tst_winSz.ws_xpixel))
     {
         crs_winSz = tst_winSz;
         return true;
@@ -171,6 +182,6 @@ bool scr_size(void)
 
 int cursInterface()
 {
-	vmenu(colours,"Hello World");
+	//vmenu(colours,"Hello World");
 	return 0;
 }
