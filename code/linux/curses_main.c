@@ -23,7 +23,7 @@
 #include <string.h>
 #include <ctype.h>
 
-//Declerations
+//Global Declerations
 
 /* This struct defines each position on the screen with the characer that should be displayed and the data assiciated with that position. */
 typedef struct screen {
@@ -98,16 +98,6 @@ int curses_main()
 		scr_size();
         mvprintw(1,1,"%i -- %i || ", crs_winSz.ws_col, crs_winSz.ws_row);
         refresh();
-
-        if((crs_winSz.ws_ypixel < 24) | (crs_winSz.ws_xpixel < 80))
-        {
-            clear();
-            while(toupper(getch()) != 'C')
-            {
-                mvprintw(1,1, "This program was meant to be viewed at\n80x24 minimum and will\nattempt to move objects to\nto allow it's continued.\n Press C to continue.");
-                refresh();
-            }
-        }
 
 		if(scr_size() == true)
         {
